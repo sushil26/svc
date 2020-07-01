@@ -7,7 +7,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
-        var api = "https://vc4all.co/careator_getToDate/careator_getToDate";
+        var api = "https://vc4all.in/careator_getToDate/careator_getToDate";
         careatorHttpFactory.get(api).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
@@ -33,7 +33,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.getToDate();
     $scope.getLogin_hostDetailsById = function (id) {
         console.log("getLogin_hostDetailsById-->: " + id);
-        var api = "https://vc4all.co/careator_getUser/careator_getUserById/" + id;
+        var api = "https://vc4all.in/careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -53,7 +53,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("localstorage session randomId(" + localStorage.getItem('sessionRandomId') + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
                     /* ##### Start: Logout Logic  ##### */
                     var id = userData.userId;
-                    var api = "https://vc4all.co/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    var api = "https://vc4all.in/careator_loggedin/getLoggedinSessionURLById/" + id;
                     console.log("api: " + api);
                     careatorHttpFactory.get(api).then(function (data) {
                         console.log("data--" + JSON.stringify(data.data));
@@ -166,7 +166,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
-        var api = "https://vc4all.co/careator_adminBasicData/getAdminObjectId";
+        var api = "https://vc4all.in/careator_adminBasicData/getAdminObjectId";
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -194,7 +194,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             SweetAlert.swal("You have to disconnect your old session in-order to open new");
             // alert("You have to disconnect your old session in-order to open new");
         } else {
-            window.open('https://vc4all.co/careator', '_blank');
+            window.open('https://vc4all.in/careator', '_blank');
         }
 
     }
@@ -214,7 +214,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 if (isConfirm) {
                     SweetAlert.swal("Logged Out");
                     var id = userData.userId;
-                    var api = "https://vc4all.co/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    var api = "https://vc4all.in/careator_loggedin/getLoggedinSessionURLById/" + id;
                     console.log("api: " + api);
                     careatorHttpFactory.get(api).then(function (data) {
                         console.log("data--" + JSON.stringify(data.data));
@@ -266,19 +266,19 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     // $scope.closeYourOldSession = function(){
     //     console.log("closeYourOldSession-->");
     //     alert("Close your old session in-order to do new session");
-    //     window.open('https://vc4all.co/careator','_blank'); 
+    //     window.open('https://vc4all.in/careator','_blank'); 
 
     // }
     $scope.doRedirect = function () {
         console.log("$scope.doRedirect--->");
-        window.location.href = "https://vc4all.co";
+        window.location.href = "https://vc4all.in";
     }
 
     socket.on('comm_aboutUserEdit', function (data) {
         console.log("***comm_aboutUserEdit-->");
         if (data.id == userData.userId) {
             var id = userData.userId;
-            var api = "https://vc4all.co/careator_getUser/careator_getUserById/" + id;
+            var api = "https://vc4all.in/careator_getUser/careator_getUserById/" + id;
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
@@ -450,8 +450,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             var hr = dt.getHours().toString();
             var date = dy.concat(fy, m, hr);
             urlDate = date;
-            // w = window.open("https://vc4all.co/careator", "_blank");
-            var SIGNALING_SERVER = "https://vc4all.co";
+            // w = window.open("https://vc4all.in/careator", "_blank");
+            var SIGNALING_SERVER = "https://vc4all.in";
             signaling_socket = io(SIGNALING_SERVER);
             signaling_socket.on('connect', function () {
                 console.log("signaling_socket connect-->");
@@ -459,9 +459,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("signaling_socket message-->");
                     queryLink = config.queryId;
                     peerNew_id = config.peer_id;
-                    var url = "https://vc4all.co/careator_conf/" + peerNew_id + "/" + urlDate;
+                    var url = "https://vc4all.in/careator_conf/" + peerNew_id + "/" + urlDate;
                     // window.location.href = url;
-                    var api = "https://vc4all.co/careator/setCollection";
+                    var api = "https://vc4all.in/careator/setCollection";
                     console.log("api: " + api);
                     var obj = {
                         "email": localStorage.getItem('careatorEmail'),

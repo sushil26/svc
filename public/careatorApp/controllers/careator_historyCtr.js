@@ -6,7 +6,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
     // $scope.today = new Date();
     $scope.getToDate = function () {
         console.log("Get To Date-->");
-        var api = "https://vc4all.co/careator_getToDate/careator_getToDate";
+        var api = "https://vc4all.in/careator_getToDate/careator_getToDate";
         careatorHttpFactory.get(api).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
@@ -35,7 +35,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId;
-        var api = "https://vc4all.co/careator_eventSchedule/careator_eventGetById/" + id;
+        var api = "https://vc4all.in/careator_eventSchedule/careator_eventGetById/" + id;
         console.log("api: " + api);
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";

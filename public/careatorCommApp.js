@@ -22,7 +22,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -37,7 +37,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -52,7 +52,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -67,7 +67,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -82,7 +82,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -96,7 +96,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -111,7 +111,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -124,7 +124,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     } else {
 
                     }
@@ -138,7 +138,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     // var userData = careatorSessionAuth.getAccess("userData");
                     // if (userData.email == null || userData.email == "") {
-                    //     $window.location.href = 'https://vc4all.co';
+                    //     $window.location.href = 'https://vc4all.in';
                     // } else {
                        
                     // }
@@ -160,7 +160,7 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == 'vc4all@careator.com') {
 
                     } else {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     }
                 }
             }
@@ -174,7 +174,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     } else {
                        
                     }
@@ -188,7 +188,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     } else {
                        
                     }
@@ -203,7 +203,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://vc4all.co';
+                        $window.location.href = 'https://vc4all.in';
                     } else {
                        
                     }

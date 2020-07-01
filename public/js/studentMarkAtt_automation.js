@@ -4,15 +4,15 @@ console.log("studSchoolId: " + id + " schoolName: " + schoolName);
 
 function attendance() {
     window.open(
-        "https://vc4all.co/#!dashboard/automationAttendanceView/" + id,
+        "https://vc4all.in/#!dashboard/automationAttendanceView/" + id,
         '_blank' // <- This is what makes it open in a new window.
     );
 
 }
 function result() {
     window.open(
-        "https://vc4all.co/#!dashboard/automationResultView/" + id,
+        "https://vc4all.in/#!dashboard/automationResultView/" + id,
         '_blank' // <- This is what makes it open in a new window.
     );
-    // window.location.href = "https://vc4all.co/#!dashboard/automationResultView/"+id;    
+    // window.location.href = "https://vc4all.in/#!dashboard/automationResultView/"+id;    
 }

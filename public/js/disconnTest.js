@@ -12,7 +12,7 @@ console.log("sesionEnc: " + sesionEnc);
 
 /** CONFIG **/
 console.log("Signaling Socket.js");
-var SIGNALING_SERVER = "https://vc4all.co";
+var SIGNALING_SERVER = "https://vc4all.in";
 //var SIGNALING_SERVER = "http://localhost:5000";
 var streamArray = [];
 var signaling_socket = null; /* our socket.io connection to our webserver */
@@ -105,7 +105,7 @@ function sendEmail() {
   console.log("obj: " + JSON.stringify(obj));
 
   $.ajax({
-    url: "https://vc4all.co/careator/pswdGenerate",
+    url: "https://vc4all.in/careator/pswdGenerate",
     type: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
@@ -144,7 +144,7 @@ function checkPassword() {
   if (password != "" && careatorEmail != "") {
 
     $.ajax({
-      url: "https://vc4all.co/careator/pswdCheck",
+      url: "https://vc4all.in/careator/pswdCheck",
       type: "POST",
       data: JSON.stringify(obj),
       contentType: "application/json",
@@ -160,7 +160,7 @@ function checkPassword() {
         //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
         //   document.getElementById("videoConferenceUrl").style.display = "block";
         //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
-        //   window.location.href = "https://vc4all.co/careator";
+        //   window.location.href = "https://vc4all.in/careator";
         // }
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
@@ -212,7 +212,7 @@ function emailInvite() {
   };
   console.log("obj: " + JSON.stringify("obj"));
   $.ajax({
-    url: "https://vc4all.co/careator/emailInvite",
+    url: "https://vc4all.in/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
     type: "POST",
     data: JSON.stringify(obj),
@@ -308,13 +308,13 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href = "https://vc4all.co/disconnTest/" + id + "/" + date;
-  var url = "https://vc4all.co/disconnTest/" + id + "/" + date;
+  window.location.href = "https://vc4all.in/disconnTest/" + id + "/" + date;
+  var url = "https://vc4all.in/disconnTest/" + id + "/" + date;
   var obj = {
     "url": url
   };
   $.ajax({
-    url: "https://vc4all.co/vc/sessionCreate",
+    url: "https://vc4all.in/vc/sessionCreate",
     //  url: "http://localhost:5000/vc/login4VC",
     type: "POST",
     data: JSON.stringify(obj),
@@ -371,10 +371,10 @@ signaling_socket.on("connect", function () {
         .getElementById("linkToShare")
         .setAttribute(
           "href",
-          "https://vc4all.co/careator/" + peerNew_id + "/" + date
+          "https://vc4all.in/careator/" + peerNew_id + "/" + date
         );
       document.getElementById("linkToShare").innerHTML =
-        "https://vc4all.co/careator/" + peerNew_id + "/" + date;
+        "https://vc4all.in/careator/" + peerNew_id + "/" + date;
     }
     else {
       console.log("query id nt null");
@@ -383,10 +383,10 @@ signaling_socket.on("connect", function () {
         .getElementById("linkToShare")
         .setAttribute(
           "href",
-          "https://vc4all.co/careator/" + queryLink + "/" + date
+          "https://vc4all.in/careator/" + queryLink + "/" + date
         );
       document.getElementById("linkToShare").innerHTML =
-        "https://vc4all.co/careator/" + queryLink + "/" + date;
+        "https://vc4all.in/careator/" + queryLink + "/" + date;
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
@@ -926,7 +926,7 @@ signaling_socket.on("authorizedForClose", function (config) {
   if (config.removableId == peerNew_id) {
     console.log("Removable alert should start");
     alert("Session creater removed you from conference");
-    window.location.href = "https://vc4all.co";
+    window.location.href = "https://vc4all.in";
   }
 
   // delete peer_media_sselements[config.peer_id];

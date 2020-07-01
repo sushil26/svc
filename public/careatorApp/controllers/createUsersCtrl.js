@@ -7,7 +7,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         var obj = {
             "file": careatorEmp
         }
-        var api = "https://vc4all.co/careator/careatorMasterInsert";
+        var api = "https://vc4all.in/careator/careatorMasterInsert";
         console.log("api: " + api);
         careatorHttpFactory.csvUpload(obj, api).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
@@ -55,7 +55,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        var api = "https://vc4all.co/careator/careatorSingleUserInsert";
+        var api = "https://vc4all.in/careator/careatorSingleUserInsert";
         console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
