@@ -1,4 +1,3 @@
-
 // var encUrl = localStorage.getItem("encUrl");
 // var encPswd = localStorage.getItem("encPswd");
 // var decryptedUrl = CryptoJS.AES.decrypt(encUrl, "url");
@@ -10,7 +9,6 @@
 var sesionEnc = localStorage.getItem("sessionEnc");
 
 // console.log("sesionEnc: "+sesionEnc);
-
 
 /** CONFIG **/
 console.log("Signaling Socket.js");
@@ -53,40 +51,34 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
-
   if (localStorage.getItem("careatorEmail")) {
-
     var userNameEmail = localStorage.getItem("careatorEmail");
-    var emailIdSplit = userNameEmail.split('@');
+    var emailIdSplit = userNameEmail.split("@");
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("invitePeople_container").style.display = "block";
-  }
-  else if (localStorage.getItem("careatorFriendName")) {
+  } else if (localStorage.getItem("careatorFriendName")) {
     userName = localStorage.getItem("careatorFriendName");
     careatorFriendName = true;
     document.getElementById("videoConferenceUrl").style.display = "none";
     document.getElementById("invitePeople_container").style.display = "none";
-  }
-  else {
+  } else {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
   console.log("userName: " + userName);
-}
-else {
-
+} else {
   if (localStorage.getItem("careatorEmail")) {
     console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
     console.log("2 cond: userNameEmail: " + userNameEmail);
-    var emailIdSplit = userNameEmail.split('@');
+    var emailIdSplit = userNameEmail.split("@");
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoConferenceLinkExtention").style.display = "block";
-  }
-  else {
+    document.getElementById("videoConferenceLinkExtention").style.display =
+      "block";
+  } else {
     console.log("enterEmail: -->");
     $("#enterEmail").trigger("click");
   }
@@ -96,14 +88,13 @@ else {
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
-
 }
 function sendEmail() {
   console.log("sendEmail-->");
   var careatorEmail = document.getElementById("careatorEmail").value;
   console.log("careatorEmail: " + careatorEmail);
   var obj = {
-    "careatorEmail": careatorEmail
+    careatorEmail: careatorEmail,
   };
   console.log("obj: " + JSON.stringify(obj));
 
@@ -116,7 +107,7 @@ function sendEmail() {
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
       //alert(data.message);
-      if (data.message == 'Successfully mail sent') {
+      if (data.message == "Successfully mail sent") {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
         triggerInvite();
@@ -125,12 +116,12 @@ function sendEmail() {
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      console.log(
+        "err.responseJSON: " + JSON.stringify(err.responseJSON.message)
+      );
       alert(err.responseJSON.message);
-    }
-
+    },
   });
-
 
   console.log("<--sendEmail");
 }
@@ -140,8 +131,8 @@ function checkPassword() {
   var password = document.getElementById("ppswd").value;
   var careatorEmail = localStorage.getItem("careatorEmail");
   var obj = {
-    "password": password,
-    "careatorEmail": careatorEmail
+    password: password,
+    careatorEmail: careatorEmail,
   };
   if (password != "" && careatorEmail != "") {
     console.log("obj: " + JSON.stringify(obj));
@@ -154,24 +145,23 @@ function checkPassword() {
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
         //alert(data.message);
-        if (data.message == 'Successfully mail sent') {
+        if (data.message == "Successfully mail sent") {
           console.log("Successfully mail sent");
           var userNameEmail = localStorage.getItem("careatorEmail");
-          var emailIdSplit = userNameEmail.split('@');
+          var emailIdSplit = userNameEmail.split("@");
           userName = emailIdSplit[0];
-
         }
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
-        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        console.log(
+          "err.responseJSON: " + JSON.stringify(err.responseJSON.message)
+        );
         alert(err.responseJSON.message);
-      }
-
+      },
     });
-  }
-  else {
+  } else {
     $("#enterPswd").trigger("click");
   }
   console.log("<--checkPassword");
@@ -185,8 +175,6 @@ function saveName() {
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("invitePeople_container").style.display = "none";
-
-
 }
 
 function emailInvite() {
@@ -197,9 +185,9 @@ function emailInvite() {
   console.log("URL: " + URL);
   var obj = {
     email: email,
-    url: URL
+    url: URL,
   };
-  console.log("obj: "+JSON.stringify("obj"));
+  console.log("obj: " + JSON.stringify("obj"));
   $.ajax({
     url: "https://vc4all.in/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
@@ -210,7 +198,7 @@ function emailInvite() {
     success: function (data) {
       var userData = {
         email: email,
-        url: URL
+        url: URL,
       };
       console.log("data: " + JSON.stringify(data));
 
@@ -219,11 +207,11 @@ function emailInvite() {
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      console.log(
+        "err.responseJSON: " + JSON.stringify(err.responseJSON.message)
+      );
       alert(err.responseJSON.message);
-    }
-
-
+    },
   });
 
   console.log("<--emailInvite");
@@ -249,7 +237,6 @@ function emailInvite() {
 //     username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
 //   }
 
-
 // for(var x=0;x<sesionEnc.length;x++){
 //   console.log("")
 //   ICE_SERVERS[x]=sesionEnc[x];
@@ -258,39 +245,61 @@ function emailInvite() {
 // var ICE_SERVERS =sesionEnc.slice();
 // console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
-var ICE_SERVERS = [{ url: "stun:stun.l.google.com:19302" },
-{ url: "stun:s3.xirsys.com" },
-{
-  url: "turn:s3.xirsys.com:80?transport=udp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+var ICE_SERVERS = [
+  [
+    { url: "stun:stun.l.google.com:19302" },
+    { url: "stun:s3.xirsys.com" },
+    { urls: ["stun:bn-turn1.xirsys.com"] },
+    {
+      username:
+        "FI2Tavb38gKqpdSrRFt26UhRAT0ACqGqONtMFU4kP7iMl6kVk9jqDUbUxO4vFMkkAAAAAF8D9O92YzRhbGw=",
+      credential: "5551bf0e-c007-11ea-82ca-0242ac140004",
+      urls: [
+        "turn:bn-turn1.xirsys.com:80?transport=udp",
+        "turn:bn-turn1.xirsys.com:3478?transport=udp",
+        "turn:bn-turn1.xirsys.com:80?transport=tcp",
+        "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+        "turns:bn-turn1.xirsys.com:443?transport=tcp",
+        "turns:bn-turn1.xirsys.com:5349?transport=tcp",
+      ],
+    },
+  ],
+];
 
-}, {
-  url: "turn:s3.xirsys.com:3478?transport=udp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
-}, {
-  url: "turn:s3.xirsys.com:80?transport=tcp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
-}, {
-  url: "turn:s3.xirsys.com:3478?transport=tcp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
-}, {
-  url: "turns:s3.xirsys.com:443?transport=tcp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
-}, {
-  url: "turns:s3.xirsys.com:5349?transport=tcp",
-  credential: sesionEnc,
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
-}];
+// var ICE_SERVERS = [
+//   { url: "stun:stun.l.google.com:19302" },
+//   { url: "stun:s3.xirsys.com" },
+//   {
+//     url: "turn:s3.xirsys.com:80?transport=udp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+//   {
+//     url: "turn:s3.xirsys.com:3478?transport=udp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+//   {
+//     url: "turn:s3.xirsys.com:80?transport=tcp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+//   {
+//     url: "turn:s3.xirsys.com:3478?transport=tcp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+//   {
+//     url: "turns:s3.xirsys.com:443?transport=tcp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+//   {
+//     url: "turns:s3.xirsys.com:5349?transport=tcp",
+//     credential: sesionEnc,
+//     username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5",
+//   },
+// ];
 
 function disconnecSession() {
   console.log("disconnecSession-->");
@@ -300,7 +309,7 @@ function disconnecSession() {
     console.log("start to disconnect the session");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
-      owner: peerNew_id
+      owner: peerNew_id,
     });
   } else {
     console.log("You are not session creater so you cant delete session");
@@ -313,7 +322,7 @@ function startSession(id, date) {
   window.location.href = "https://vc4all.in/careator/" + id + "/" + date;
   var url = "https://vc4all.in/careator/" + id + "/" + date;
   var obj = {
-    "url": url
+    url: url,
   };
   $.ajax({
     url: "https://vc4all.in/vc/sessionCreate",
@@ -330,7 +339,7 @@ function startSession(id, date) {
       } else {
         alert("refresh your page and try again");
       }
-    }
+    },
   });
   console.log(",--startSession");
 }
@@ -426,7 +435,6 @@ signaling_socket.on("connect", function () {
             join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
           });
         });
-
     }
     console.log("<--signaling_socket message");
   });
@@ -439,7 +447,7 @@ signaling_socket.on("disconnect", function () {
   // document.getElementById(peerNew_id).remove();
 
   /* Tear down all of our peer connections and remove all the
-         * media divs when we disconnect */
+   * media divs when we disconnect */
   for (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();
     peer_userName_elements[peer_id].remove();
@@ -464,7 +472,7 @@ function join__channel(channel, userdata) {
     owner: peerNew_id,
     queryLink: queryLink,
     timeLink: timeLink,
-    userName: userName
+    userName: userName,
   });
 
   console.log("<--join__channel");
@@ -500,10 +508,11 @@ signaling_socket.on("addPeer", function (config) {
   var peer_connection = new RTCPeerConnection(
     { iceServers: ICE_SERVERS },
     {
-      optional: [{ DtlsSrtpKeyAgreement: true }]
-    } /* this will no longer be needed by chrome
-                                                                        * eventually (supposedly), but is necessary 
-                                                                        * for now to get firefox to talk to chrome */
+      optional: [{ DtlsSrtpKeyAgreement: true }],
+    }
+    /* this will no longer be needed by chrome
+     * eventually (supposedly), but is necessary
+     * for now to get firefox to talk to chrome */
   );
 
   console.log("peer_connection: " + peer_connection);
@@ -531,8 +540,8 @@ signaling_socket.on("addPeer", function (config) {
         peer_id: peer_id,
         ice_candidate: {
           sdpMLineIndex: event.candidate.sdpMLineIndex,
-          candidate: event.candidate.candidate
-        }
+          candidate: event.candidate.candidate,
+        },
       });
     }
     console.log("<--onicecandidate");
@@ -553,7 +562,7 @@ signaling_socket.on("addPeer", function (config) {
     // remote_media.attr("style", "border:5px solid gray");
     remote_media.attr("id", peer_id + "Remote");
     if (MUTE_AUDIO_BY_DEFAULT) {
-      remote_media.prop("muted", true );
+      remote_media.prop("muted", true);
     }
     remote_media.attr("controls", "");
 
@@ -566,22 +575,22 @@ signaling_socket.on("addPeer", function (config) {
     // $('#' + peer_id + 'remoteVideoElement').append(remote_media);
     $("#portfolio-wrapper").append(
       '<div id="' +
-      peer_id +
-      'remoteContainer" class="portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3" ><div id="' +
-      peer_id +
-      'remoteVideoElement"></div><div class="details"><button id="' +
-      peer_id +
-      'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
-      config.userName +
-      '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
-      peer_id +
-      '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
-      peer_id +
-      '" owner=' +
-      peer_id +
-      " name=" +
-      config.userName +
-      "></i> </div></div>"
+        peer_id +
+        'remoteContainer" class="portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3" ><div id="' +
+        peer_id +
+        'remoteVideoElement"></div><div class="details"><button id="' +
+        peer_id +
+        'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
+        config.userName +
+        '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
+        peer_id +
+        '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
+        peer_id +
+        '" owner=' +
+        peer_id +
+        " name=" +
+        config.userName +
+        "></i> </div></div>"
     );
     $("#" + peer_id + "remoteVideoElement").append(remote_media);
 
@@ -608,7 +617,7 @@ signaling_socket.on("addPeer", function (config) {
             removableName: removableName,
             controllerId: peerNew_id,
             queryLink: queryLink,
-            timeLink: timeLink
+            timeLink: timeLink,
           });
         });
     }
@@ -645,7 +654,7 @@ signaling_socket.on("addPeer", function (config) {
         background: "none",
         border: "none",
         height: "auto",
-        width: "20%"
+        width: "20%",
       });
       $("#videoElem111").removeClass(
         "portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3"
@@ -668,7 +677,7 @@ signaling_socket.on("addPeer", function (config) {
         background: "",
         border: "",
         height: "",
-        width: ""
+        width: "",
       });
       $("#videoElem111").addClass(
         "portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3"
@@ -752,10 +761,10 @@ signaling_socket.on("addPeer", function (config) {
   }
 
   /* Only one side of the peer connection should create the
-         * offer, the signaling server picks one to be the offerer. 
-         * The other user will get a 'sessionDescription' event and will
-         * create an offer, then send back an answer 'sessionDescription' to us
-         */
+   * offer, the signaling server picks one to be the offerer.
+   * The other user will get a 'sessionDescription' event and will
+   * create an offer, then send back an answer 'sessionDescription' to us
+   */
   if (config.should_create_offer) {
     console.log("Create offer-->");
     // console.log("creating offer from peer id: " + config.owner);
@@ -774,7 +783,7 @@ signaling_socket.on("addPeer", function (config) {
               from: "addpeer",
               owner: config.owner,
               queryLink: queryLink,
-              timeLink: timeLink
+              timeLink: timeLink,
             });
             console.log("Offer setLocalDescription succeeded");
           },
@@ -836,7 +845,7 @@ signaling_socket.on("sessionDescription", function (config) {
                     from: "sessionDescription",
                     owner: config.owner,
                     queryLink: queryLink,
-                    timeLink: timeLink
+                    timeLink: timeLink,
                   });
                   console.log("Answer setLocalDescription succeeded");
                 },
@@ -956,8 +965,8 @@ function setup_local_media(callback, errorback) {
     if (callback) callback();
     return;
   }
-  /* Ask user for permission to use the computers microphone and/or camera, 
-     * attach it to an <audio> or <video> tag if they give us access. */
+  /* Ask user for permission to use the computers microphone and/or camera,
+   * attach it to an <audio> or <video> tag if they give us access. */
   console.log("Requesting access to local audio / video inputs");
 
   navigator.getUserMedia =
@@ -985,7 +994,7 @@ function setup_local_media(callback, errorback) {
       var local_media = USE_VIDEO ? $("<video>") : $();
       // local_media.attr("autoplay", "true");
       //local_media.attr("autoplay", "autoplay");
-      local_media.prop("muted", true ); /* always mute ourselves by default */
+      local_media.prop("muted", true); /* always mute ourselves by default */
       local_media.attr("id", "videoElem");
       local_media.attr(
         "style",
@@ -996,8 +1005,8 @@ function setup_local_media(callback, errorback) {
       // $('#videosAttach').append(local_media);
       $("#portfolio-wrapper").append(
         '<div id="videoElem111" class="portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
-        userName +
-        "</h4> </div></div>"
+          userName +
+          "</h4> </div></div>"
       );
       $("#videosAttach").append(local_media);
 
@@ -1036,7 +1045,7 @@ function setup_local_media(callback, errorback) {
           console.log("audio_btn-->");
           console.log(
             "stream.getAudioTracks()[0].enabled: " +
-            stream.getAudioTracks()[0].enabled
+              stream.getAudioTracks()[0].enabled
           );
           stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
             .enabled;
@@ -1052,7 +1061,7 @@ function setup_local_media(callback, errorback) {
 
           console.log(
             "stream.getAudioTracks()[0].enabled: " +
-            stream.getAudioTracks()[0].enabled
+              stream.getAudioTracks()[0].enabled
           );
           console.log("<--audio_btn");
         });
@@ -1109,7 +1118,10 @@ function setup_local_media(callback, errorback) {
                   ? $("<video>")
                   : $("<audio>");
                 //local_mediaScreenShare.attr("autoplay", "autoplay");
-                local_mediaScreenShare.prop("muted", true ); /* always mute ourselves by default */
+                local_mediaScreenShare.prop(
+                  "muted",
+                  true
+                ); /* always mute ourselves by default */
                 // local_mediaScreenShare.attr("controls", "");
                 local_mediaScreenShare.attr("id", "screenShareElem");
                 local_mediaScreenShare.attr(
@@ -1153,7 +1165,10 @@ function setup_local_media(callback, errorback) {
                       // local_media_shareStream = stream;
                       var local_media = USE_VIDEO ? $("<video>") : $();
                       //local_media.attr("autoplay", "autoplay");
-                      local_media.prop("muted", true ); /* always mute ourselves by default */
+                      local_media.prop(
+                        "muted",
+                        true
+                      ); /* always mute ourselves by default */
                       // local_media.attr("controls", "");
                       local_media.attr("id", "videoElem");
                       local_media.attr("autoplay", true);
@@ -1243,8 +1258,8 @@ function scrollDown() {
       callback(null, "firefox", {
         video: {
           mozMediaSource: "window",
-          mediaSource: "window"
-        }
+          mediaSource: "window",
+        },
       });
       return;
     }
@@ -1291,10 +1306,10 @@ function scrollDown() {
         mandatory: {
           chromeMediaSource: error ? "screen" : "desktop",
           maxWidth: window.screen.width > 1920 ? window.screen.width : 1920,
-          maxHeight: window.screen.height > 1080 ? window.screen.height : 1080
+          maxHeight: window.screen.height > 1080 ? window.screen.height : 1080,
         },
-        optional: []
-      }
+        optional: [],
+      },
     };
 
     if (sourceId) {
@@ -1317,7 +1332,7 @@ function scrollDown() {
 
     iframe.contentWindow.postMessage(
       {
-        captureSourceId: true
+        captureSourceId: true,
       },
       "*"
     );
@@ -1331,7 +1346,7 @@ function scrollDown() {
       getScreenId(function (error, sourceId, screen_constraints) {
         if (!screen_constraints) {
           screen_constraints = {
-            video: true
+            video: true,
           };
         }
 
@@ -1393,7 +1408,7 @@ function scrollDown() {
 
     iframe.contentWindow.postMessage(
       {
-        getChromeExtensionStatus: true
+        getChromeExtensionStatus: true,
       },
       "*"
     );
